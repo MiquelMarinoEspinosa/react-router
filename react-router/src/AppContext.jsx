@@ -1,5 +1,5 @@
-import Checkout from "./pages/Checkout";
-import Login from "./pages/Login";
+import Checkout from "./Checkout";
+import Login from "./Login";
 import { UserProvider } from "../context/UserContext";
 import Logout from "./Logout";
 
