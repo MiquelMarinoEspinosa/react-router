@@ -6,16 +6,16 @@ function UserProvider({ children }) {
   //   const [user, setUser] = useState("guest");
   function userReducer(state, action) {
     if (action.type == "login") {
-      return action.payload;
+      return { user: action.payload };
     }
 
     if (action.type == "logout") {
-      return "Guest";
+      return { user: "Guest" };
     }
   }
-  const [user, dispatch] = useReducer(userReducer, "Guest");
+  const [state, dispatch] = useReducer(userReducer, { user: null });
   return (
-    <userContext.Provider value={{ user, dispatch }}>
+    <userContext.Provider value={{ ...state, dispatch }}>
       {children}
     </userContext.Provider>
   );
