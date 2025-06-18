@@ -1,24 +1,21 @@
-import { useContext, useState } from "react";
-import { userContext } from "../context/UserContext";
+import { useState } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 export default function Login() {
   const [value, setValue] = useState("");
-  const { user, dispatch } = useContext(userContext);
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch({ type: "login", payload: value });
-    setValue("");
+  const [user, setUser] = useLocalStorage();
+  function handleClick() {
+    setUser(value);
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <button onClick={handleClick}>Login</button>
+      <p>User stored: {user}</p>
     </div>
   );
 }

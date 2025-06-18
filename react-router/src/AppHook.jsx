@@ -1,7 +1,5 @@
-import useDisplayMessage from "./hooks/useDisplayMessage";
+import Login from "./Login";
 
 export default function AppHook() {
-  const [message, displayMessage] = useDisplayMessage();
-  displayMessage();
-  return <div>Message is: {message}</div>;
+  return <Login />;
 }
